@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from Book.js
+// import schema from Property.js
 const propertySchema = require('./Property');
 
 const userSchema = new Schema({
@@ -24,7 +24,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  savedBooks: [propertySchema],
 });
 
 userSchema.pre('save', async function (next) {

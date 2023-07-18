@@ -35,7 +35,7 @@ const propertySchema = new Schema({
         required: true,
     },
     land: {
-        type: number,
+        type: Number,
         required: true,
     },
     price: {
