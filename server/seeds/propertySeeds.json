@@ -1,0 +1,28 @@
+[
+    {
+        "street": "31 Ventura St.",
+        "suburb": "Quakers Hill",
+        "state": "NSW",
+        "postcode": "2763",
+        "bed": 4,
+        "bathroom": 2.5,
+        "car": 2,
+        "landsize": 300,
+        "price": 1500000,
+        "type": "house",
+        "category": "for sale"
+    },
+    {
+        "street": "6/66 Rooty Hill Road North",
+        "suburb": "Rooty Hill",
+        "state": "NSW",
+        "postcode": "2766",
+        "bed": 2,
+        "bathroom": 2.5,
+        "car": 1,
+        "landsize": 150,
+        "price": 1000000,
+        "type": "townhouse",
+        "category": "for rent"
+    }
+]
