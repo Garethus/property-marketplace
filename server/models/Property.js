@@ -1,11 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const propertySchema = new Schema({
-    streetAddress: {
+    street: {
         type: String,
         required: true,
-        minlength: 1,
-        maxlength: 280,
         trim: true,
     },
     suburb: {
@@ -34,7 +32,7 @@ const propertySchema = new Schema({
         type: Number,
         required: true,
     },
-    land: {
+    landsize: {
         type: Number,
         required: true,
     },
@@ -42,11 +40,11 @@ const propertySchema = new Schema({
         type: Number,
         required: true,
     },
-    propertyType: {
+    type: {
         type: String,
         required: true,
     },
-    propertyCategory: {
+    category: {
         type: String,
         required: true,
     }
