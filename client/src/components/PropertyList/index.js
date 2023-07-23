@@ -2,17 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PropertyList = ({
-  street,
-  suburb,
-  state,
-  postcode,
-  bed,
-  bathroom,
-  car,
-  landsize,
-  price,
-  type,
-  category,
+  properties,
   title,
   showTitle = true,
   showUsername = true,
