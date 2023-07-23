@@ -40,7 +40,7 @@ const PropertyList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/properties/${property._id}`}
             >
-              Saves this Property.
+              Save this Property.
             </Link>
           </div>
         ))
