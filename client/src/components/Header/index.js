@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
-import myLogo from '../../../public/logo.png'
+import myLogo from '../../assets/logo.png'
 
 const Header = () => {
   const logout = (event) => {
