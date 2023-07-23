@@ -56,7 +56,7 @@ const Signup = () => {
                   className="form-input"
                   placeholder="Your firstname"
                   name="firstname"
-                  type="text"
+                  type="firstname"
                   value={formState.firstname}
                   onChange={handleChange}
                 />
@@ -64,7 +64,7 @@ const Signup = () => {
                   className="form-input"
                   placeholder="Your lastname"
                   name="lastname"
-                  type="text"
+                  type="lastname"
                   value={formState.lastname}
                   onChange={handleChange}
                 />
