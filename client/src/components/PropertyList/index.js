@@ -59,4 +59,4 @@ const PropertyList = ({
   );
 };
 
-export default ThoughtList;
+export default PropertyList;
