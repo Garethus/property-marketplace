@@ -41,7 +41,6 @@ export const QUERY_PROPERTIES = gql`
       price
       type
       category
-      image
     }
   }
 `;

@@ -7,14 +7,14 @@ import myLogo from '../../assets/logo.png'
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
-    Auth.logout();
+    Auth.logout(); 
   };
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            {myLogo}
+            Property Market
           </Link>
         </div>
         <div>
