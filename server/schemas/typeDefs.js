@@ -32,17 +32,31 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    users: [User]
     properties: [Property]
     property(propertyId: ID!): Property
     propertiesByState(state: String!): [Property]
   }
 
+  input PropertyInput {
+    propertyId: String
+    street: String
+    suburb: String
+    state: String
+    postcode: Int
+    bed: Int
+    bathroom: Int
+    car: Int
+    landsize: Int
+    price: Int
+    type: String
+    category: String
+  }
+
   type Mutation {
     addUser(firstname: String!, lastname: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveProperty(propertyId: ID!): Property
-    removeProperty(propertyId: ID!): Property
+    saveProperty(property: PropertyInput!): User
+    removeProperty(property: PropertyInput!): User
   }
 `;
 

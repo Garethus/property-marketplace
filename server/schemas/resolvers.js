@@ -5,11 +5,9 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find();
-    },
-    properties: async () => {
-      return Property.find();
+    properties: async (parent, { email }) => {
+      const params = email ? { email } : {};
+      return Property.find(params);
     },
     property: async (parent, { propertyId }) => {
       return Property.findOne({ _id: propertyId });
@@ -30,29 +28,7 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { firstname, lastname, email, password }) => {
       const user = await User.create({ firstname, lastname, email, password });
-
-      if (!user) {
-        throw new Error('Something went wrong while creating the user!');
-      }
-
       const token = signToken(user);
-      return { token, user };
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError('No user found with this email address');
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user);
-
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -74,16 +50,19 @@ const resolvers = {
     },
     saveProperty: async (parent, { propertyData }, context) => {
       if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate(
+        const thought = await Thought.create({
+          thoughtText,
+          thoughtAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { savedProperties: propertyData } },
-          { new: true }
+          { $addToSet: { thoughts: thought._id } }
         );
 
-        return updatedUser;
+        return thought;
       }
-
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError('You need to be logged in!');
     },
     removeProperty: async (parent, { propertyId }, { user }) => {
       const updatedUser = await User.findOneAndUpdate(
