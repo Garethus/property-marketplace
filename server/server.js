@@ -7,6 +7,8 @@ const { ApolloServer } = require('apollo-server-express');
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
 const path = require('path');
 
+const { authMiddleware } = require('./utils/auth');
+
 // Import the two parts of a GraphQL schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -20,10 +22,11 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: authMiddleware,
 });
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // if we're in production, serve client/build as static assets
